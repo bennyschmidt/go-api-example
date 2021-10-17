@@ -3,27 +3,27 @@ package main
 // Dependencies
 
 import (
-	"fmt"
-	"html"
-	"log"
-	"net/http"
+  "fmt"
+  "html"
+  "log"
+  "net/http"
 )
 
 // Main
 
 func main() {
 
-	// Ping
+  // Ping
 
-	http.HandleFunc("/", func(writer http.ResponseWriter, reader *http.Request) {
-		fmt.Fprintf(writer, "Ping!")
-	})
+  http.HandleFunc("/", func(writer http.ResponseWriter, reader *http.Request) {
+    fmt.Fprintf(writer, "Ping!")
+  })
 
-	// Hello
+  // Hello
 
-	http.HandleFunc("/hello", func(writer http.ResponseWriter, reader *http.Request) {
-		fmt.Fprintf(writer, "Hello! The route is %q :)", html.EscapeString(reader.URL.Path))
-	})
+  http.HandleFunc("/hello", func(writer http.ResponseWriter, reader *http.Request) {
+    fmt.Fprintf(writer, "Hello! The route is %q :)", html.EscapeString(reader.URL.Path))
+  })
 
-	log.Fatal(http.ListenAndServe(":8081", nil))
+  log.Fatal(http.ListenAndServe(":8081", nil))
 }
